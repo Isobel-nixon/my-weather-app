@@ -1,25 +1,26 @@
 import React from 'react';
 import {WeatherResult} from './WeatherResult';
 import {PostcodeChange} from './PostcodeChange';
+import GetWeather from './GetWeather'
 
 export class WeatherForm extends React.Component{
     constructor(props){
         super(props);
-        this.state = {postcode:'default'}
-        this.changePostcode = this.changePostcode.bind(this)
+        this.state = {weather: '', location: ''};
+        this.getWeather = this.getWeather.bind(this);
     }
     
-    changePostcode(newPostcode){
-        this.setState({
-            postcode: newPostcode
-        });
+    getWeather(postcode){
+        GetWeather.getWeather(postcode).then(weather=>{
+            this.setState({weather: weather.weatherDescription, location: weather.weatherLocation});
+        })
     }
 
     render(){
         return (
             <div>
-                <WeatherResult postcode={this.state.postcode}/>
-                <PostcodeChange onSubmit = {this.changePostcode}/>
+                <WeatherResult weather={this.state.weather} location={this.state.location}/>
+                <PostcodeChange onSubmit = {this.getWeather}/>
             </div>
         );
     }

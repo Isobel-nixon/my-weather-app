@@ -9,8 +9,10 @@ export class PostcodeChange extends React.Component{
     handleSubmit(e){
         const newPostcode = e.target.querySelector(
             'input[type="text"]').value;
-        e.target.querySelector('input[type="text"]').value = '';
+        //e.target.querySelector('input[type="text"]').value = '';
+        console.log(newPostcode);
         this.props.onSubmit(newPostcode);
+        e.preventDefault();
     }
 
     render(){
@@ -18,6 +20,6 @@ export class PostcodeChange extends React.Component{
         <form onSubmit={this.handleSubmit}>
                     <input type='text' className='postcode' placeholder='Enter Postcode Here'></input>
                     <input type='submit'></input>
-                </form>
+        </form>
         )}
 }
