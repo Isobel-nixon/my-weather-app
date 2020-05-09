@@ -8,21 +8,21 @@ import Tenor from './Tenor';
 export class WeatherForm extends React.Component{
     constructor(props){
         super(props);
-        this.state = {description: '', name: '', gifSrc: ''};
+        this.state = {description: '', name: '', main:'', gifSrc: ''};
         this.getWeather = this.getWeather.bind(this);
         this.getGif = this.getGif.bind(this);
     }
 
-    getGif(description){
-        Tenor.getGif(description).then(gifSrc =>{
+    getGif(main){
+        Tenor.getGif(main).then(gifSrc =>{
             this.setState({gifSrc: gifSrc})
         })
     }
     
     getWeather(postcode){
         GetWeather.getWeather(postcode).then(weather=>{
-            this.setState({description: weather.description, name: weather.name});
-            this.getGif(this.state.description);
+            this.setState({description: weather.description, name: weather.name, main: weather.main});
+            this.getGif(this.state.main);
         });
     }
 

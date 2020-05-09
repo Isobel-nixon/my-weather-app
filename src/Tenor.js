@@ -1,7 +1,8 @@
 
 
 const getGif = (searchTerm) =>{
-    const apiKey = 'EMRSM12NKWKU'
+    console.log(searchTerm);
+    const apiKey = 'EMRSM12NKWKU';
     const url = `https://api.tenor.com/v1/search?${searchTerm}&key=${apiKey}&media_filter=minimal&limit=50`;
     return fetch(url)
     .then(response=>response.json())
