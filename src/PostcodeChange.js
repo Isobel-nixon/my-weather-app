@@ -7,12 +7,12 @@ export class PostcodeChange extends React.Component{
     }
 
     handleSubmit(e){
+        e.preventDefault();
         const newPostcode = e.target.querySelector(
             'input[type="text"]').value;
         //e.target.querySelector('input[type="text"]').value = '';
         console.log(newPostcode);
         this.props.onSubmit(newPostcode);
-        e.preventDefault();
     }
 
     render(){

@@ -3,10 +3,10 @@ import React from 'react';
 export class WeatherResult extends React.Component{
     render(){
         let result;
-        if(this.props.weather===''){
+        if(this.props.description===''){
             result = <h1>What's the weather today?</h1>
         }else{
-            result = <h1>The weather in {this.props.location} is {this.props.weather}</h1>           
+            result = <h1>{this.props.name} will experience {this.props.description}</h1>           
         }
         return result;
     }

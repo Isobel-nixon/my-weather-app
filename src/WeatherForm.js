@@ -6,20 +6,20 @@ import GetWeather from './GetWeather'
 export class WeatherForm extends React.Component{
     constructor(props){
         super(props);
-        this.state = {weather: '', location: ''};
+        this.state = {description: '', name: ''};
         this.getWeather = this.getWeather.bind(this);
     }
     
     getWeather(postcode){
         GetWeather.getWeather(postcode).then(weather=>{
-            this.setState({weather: weather.weatherDescription, location: weather.weatherLocation});
+            this.setState({description: weather.description, name: weather.name});
         })
     }
 
     render(){
         return (
             <div>
-                <WeatherResult weather={this.state.weather} location={this.state.location}/>
+                <WeatherResult description={this.state.description} name={this.state.name}/>
                 <PostcodeChange onSubmit = {this.getWeather}/>
             </div>
         );
